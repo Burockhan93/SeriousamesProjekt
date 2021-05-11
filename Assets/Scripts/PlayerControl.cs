@@ -25,7 +25,6 @@ public class PlayerControl : MonoBehaviour
             throwFruit();
         }
         
-
         // Get the horizontal and vertical axis.
         // By default they are mapped to the arrow keys.
         // The value is in the range -1 to 1
