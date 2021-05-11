@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerLook : MonoBehaviour
+{
+    float horizontalSpeed = 2.0f;
+    float verticalSpeed = 2.0f;
+
+    void Update()
+    {
+        // Get the mouse delta. This is not in the range -1...1
+        float h = horizontalSpeed * Input.GetAxis("Mouse X");
+        //float v = verticalSpeed * Input.GetAxis("Mouse Y");
+        Debug.Log(Input.GetAxis("Mouse X"));
+        Debug.Log(Input.GetAxis("Mouse Y"));
+        transform.Rotate(0, h, 0);
+    }
+}
