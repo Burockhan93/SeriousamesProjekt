@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class GameUI : MonoBehaviour
 
     public Text remainingLifeText;
     public Text foodText;
+    public Text scoreText;
     public GameObject[] food;
 
     public static GameObject selectedFood;
     private int foodPointer = 0;
-    public static int remainingLife = 5;
+    //TODO change to less life points
+    public static int remainingLife = 3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +30,11 @@ public class GameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //change selected item
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            Debug.Log("Scroll " + (int)Input.mouseScrollDelta.y);
-            changeFood((int)Input.mouseScrollDelta.y);
-        }
+        //increase score by time
+        StaticClass.score += Time.deltaTime;
+        scoreText.text = Mathf.Round(StaticClass.score).ToString();
 
+        //check, if the player is dead
         if (remainingLife > 0)
         {
             remainingLifeText.text = remainingLife.ToString();
@@ -41,6 +42,14 @@ public class GameUI : MonoBehaviour
         else
         {
             Debug.Log("0 remaining life -> end game.");
+            SceneManager.LoadScene("EndScreen");
+        }
+
+        //change selected item
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            Debug.Log("Scroll " + (int)Input.mouseScrollDelta.y);
+            changeFood((int)Input.mouseScrollDelta.y);
         }
 
     }

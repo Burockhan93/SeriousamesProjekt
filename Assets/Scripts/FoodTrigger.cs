@@ -19,18 +19,15 @@ public class FoodTrigger : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collison " + gameObject.name + " with " + collision.collider.gameObject.name);
-
-        if (collision.collider.gameObject.tag == "Player")
-        {
-            Debug.Log("Ignore collision in Food Trigger.");
-            Physics.IgnoreCollision(collision.collider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
-        }
+        Debug.Log("Collison " + gameObject.name + " with " + collision.collider.gameObject.name + " Tag " + collision.collider.gameObject.tag);
 
         if (checkFood(gameObject.name, collision.gameObject.name))
         {
             AnimalSpawner.animals.Remove(collision.collider.gameObject);
             Destroy(collision.collider.gameObject);
+
+            //add points to score
+            StaticClass.score += 10;
         }
 
         Destroy(gameObject);

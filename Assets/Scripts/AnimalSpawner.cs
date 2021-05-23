@@ -8,6 +8,7 @@ public class AnimalSpawner : MonoBehaviour
     public GameObject plane;
     public GameObject player;
     public GameObject[] animalTypes;
+
     private float rightLimitation = 0;
     private float leftLimitation = 0;
     private float frontLimitation = 0;
@@ -29,6 +30,8 @@ public class AnimalSpawner : MonoBehaviour
 
         frontLimitation = plane.transform.position.z + size[2] / 2;
         backLimitation = plane.transform.position.z - size[2] / 2;
+
+        Debug.Log(rightLimitation + "; " + leftLimitation + "; " + frontLimitation + "; " + backLimitation);
     }
 
     // Update is called once per frame
@@ -44,8 +47,10 @@ public class AnimalSpawner : MonoBehaviour
         float step = SPEED * Time.deltaTime;
         for (var i = 0; i < animals.Count; i++)
         {
+            //move the animals towards the player
             animals[i].transform.position = Vector3.MoveTowards(animals[i].transform.position, player.transform.position, step);
-            // Console.WriteLine("Amount is {0} and type is {1}", myMoney[i].amount, myMoney[i].type);
+            //keep the eyes at the player
+            animals[i].transform.LookAt(player.transform.position);
         }
 
     }
@@ -54,34 +59,33 @@ public class AnimalSpawner : MonoBehaviour
     {
         GameObject obj;
 
-        Vector3 spawnPosition = new Vector3(5, 0, 5);
-        //TODO - get vector to the player
+        Vector3 spawnPosition;
+
+        int side = Random.Range(0, 4);
+
+        int x = Random.Range((int)leftLimitation, (int)rightLimitation);
+        int y = Random.Range((int)frontLimitation, (int)backLimitation);
+
+        switch (side)
+        {
+            case 0:
+                spawnPosition = new Vector3(x, 0, backLimitation);
+                break;
+            case 1:
+                spawnPosition = new Vector3(x, 0, frontLimitation);
+                break;
+            case 2:
+                spawnPosition = new Vector3(leftLimitation, 0, y);
+                break;
+            default:
+                spawnPosition = new Vector3(rightLimitation, 0, y);
+                break;
+        }
+
         int idx = Random.Range(0, animalTypes.Length);
         obj = Instantiate(animalTypes[idx], spawnPosition, player.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
-
-        // var rBody = obj.GetComponent<Rigidbody>();
-        // rBody.AddForce(player.transform.forward * SPEED);
-
         animals.Add(obj);
 
-        // rBody.useGravity = false;
-        // var bCol = obj.AddComponent<BoxCollider>();
-
-
-        // // bCol.bounds = obj.GetComponent<Renderer>().bounds;
-        // var meshFilter = obj.AddComponent<MeshFilter>();
-
-
-        // var renderer2 = obj.AddComponent<MeshRenderer>();
-        // MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
-        // bCol.center = renderer.bounds.center;
-        // bCol.size = renderer.bounds.size;
-
-        // Debug.Log(bCol.center);
-        // Debug.Log(bCol.size);
-
-        // // bCol.attachedRigidbody = rBody;
-        // bCol.isTrigger = true;
         this.counter = 0f;
     }
 
