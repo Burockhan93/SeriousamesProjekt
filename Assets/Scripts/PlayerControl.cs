@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 2.0f;
     public float rotationSpeed = 100.0f;
     [SerializeField] GameObject camOrient;
     [SerializeField] GameObject fruit;
-
     private float _fruitCoolDown = 2;
+    private const int DESTROY_FOOD_AFTER = 3;
     private Animator _animator;
     public UnityEvent<float> onWalkingInput;
 
@@ -22,8 +22,8 @@ public class PlayerControl : MonoBehaviour
 
     private void Walk(float val)
     {
-        _animator.SetFloat("Speed_f", val); // Wenn das Player sich bewegt, summirieren wir die Werte von beiden Axis und setzen wir die Wert ins Speed_f ein. Diese Parameter ist für die "Running Animation" verantwortlich
-        _animator.SetBool("Static_b", false); // Sollte man Static state "Static_b" false setzt, erfüllt man eine Voraussetzung für "Runinng animation". Die andere 
+        _animator.SetFloat("Speed_f", val); // Wenn das Player sich bewegt, summirieren wir die Werte von beiden Axis und setzen wir die Wert ins Speed_f ein. Diese Parameter ist fï¿½r die "Running Animation" verantwortlich
+        _animator.SetBool("Static_b", false); // Sollte man Static state "Static_b" false setzt, erfï¿½llt man eine Voraussetzung fï¿½r "Runinng animation". Die andere 
     }
     private void Start()
     {
@@ -66,10 +66,13 @@ public class PlayerControl : MonoBehaviour
 
 
         InvokeWalkingEvent();
-        
-        //animationen, die werden noch verbessert. Zurzeit läuft er nur
-        //_animator.SetFloat("Speed_f", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal")))); // Wenn das Player sich bewegt, summirieren wir die Werte von beiden Axis und setzen wir die Wert ins Speed_f ein. Diese Parameter ist für die "Running Animation" verantwortlich
-        //_animator.SetBool("Static_b", false); // Sollte man Static state "Static_b" false setzt, erfüllt man eine Voraussetzung für "Runinng animation". Die andere ist : Speed_f >=0.5f
+
+        //animationen, die werden noch verbessert. Zurzeit lï¿½uft er nur
+        //_animator.SetFloat("Speed_f", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal")))); // Wenn das Player sich bewegt, summirieren wir die Werte von beiden Axis und setzen wir die Wert ins Speed_f ein. Diese Parameter ist fï¿½r die "Running Animation" verantwortlich
+        //_animator.SetBool("Static_b", false); // Sollte man Static state "Static_b" false setzt, erfï¿½llt man eine Voraussetzung fï¿½r "Runinng animation". Die andere ist : Speed_f >=0.5f
+
+
+
     }
 
     private void InvokeWalkingEvent()
@@ -83,8 +86,33 @@ public class PlayerControl : MonoBehaviour
 
     void throwFruit()
     {
-        Instantiate(fruit, transform.position, transform.rotation);
+        // GameObject obj = Instantiate(fruit, transform.position, transform.rotation);
+        GameObject obj = Instantiate(GameUI.selectedFood, transform.position, transform.rotation);
+
         _fruitCoolDown = 2;
 
+        Destroy(obj, DESTROY_FOOD_AFTER);
+
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.tag == "Border")
+        {
+            Debug.Log("Collison with player ");
+            Debug.Log(collision.collider.gameObject);
+            Debug.Log(gameObject);
+        }
+        else
+        {
+            //animal collision
+            Debug.Log("Animal collision.");
+            Destroy(collision.collider.gameObject);
+            AnimalSpawner.animals.Remove(collision.collider.gameObject);
+            GameUI.remainingLife -= 1;
+        }
+
+    }
+
+
 }
