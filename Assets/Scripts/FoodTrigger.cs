@@ -29,6 +29,19 @@ public class FoodTrigger : MonoBehaviour
             //add points to score
             StaticClass.score += 10;
         }
+        else
+        {
+            //decrease score if player is in hardcore gamemode and destory the animal if the food was wrong
+            if (StaticClass.gameDifficulty == 2)
+            {
+                AnimalSpawner.animals.Remove(collision.collider.gameObject);
+                Destroy(collision.collider.gameObject);
+
+                //decrease points to score
+                //TODO kann der Score negativ sein?
+                StaticClass.score -= 5;
+            }
+        }
 
         Destroy(gameObject);
     }

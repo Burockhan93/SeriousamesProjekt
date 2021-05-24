@@ -37,14 +37,31 @@ public class AnimalSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //increase spawn rate until max freqency of 2 animals per second
+        if (this.frequency > 0.5f)
+        {
+            this.frequency -= Time.deltaTime * 0.05f;
+        }
+
         this.counter = this.counter + Time.deltaTime;
         if (this.counter >= this.frequency)
         {
             this.Spawn();
         }
 
-        // calculate distance to move
-        float step = SPEED * Time.deltaTime;
+        // calculate distance to move and bring it into the dependency of the selected game difficulty
+        float step = 0;
+        switch (StaticClass.gameDifficulty)
+        {
+            case 1:
+                step = SPEED * Time.deltaTime * 1.5f;
+                break;
+            default:
+                step = SPEED * Time.deltaTime;
+                break;
+        }
+
         for (var i = 0; i < animals.Count; i++)
         {
             //move the animals towards the player
