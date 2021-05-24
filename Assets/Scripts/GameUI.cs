@@ -14,17 +14,31 @@ public class GameUI : MonoBehaviour
     public GameObject[] food;
 
     public static GameObject selectedFood;
-    private int foodPointer = 0;
+    private static int foodPointer = 0;
     //TODO change to less life points
-    public static int remainingLife = 3;
+    public const int MAX_LIFE = 1;
+    public static int remainingLife = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        initGame();
         remainingLifeText.text = remainingLife.ToString();
 
         changeFood(0);
+    }
+
+    public static void initGame(){
+        remainingLife = MAX_LIFE;
+        foodPointer = 0;
+        StaticClass.score = 0;
+
+        for (var i = 0; i < AnimalSpawner.animals.Count; i++)
+        {
+            Destroy(AnimalSpawner.animals[i]);
+        }
+        AnimalSpawner.animals = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -42,6 +56,9 @@ public class GameUI : MonoBehaviour
         else
         {
             Debug.Log("0 remaining life -> end game.");
+            // Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             SceneManager.LoadScene("EndScreen");
         }
 

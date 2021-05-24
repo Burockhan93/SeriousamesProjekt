@@ -9,6 +9,10 @@ public class PlayerControl : MonoBehaviour
     public float rotationSpeed = 100.0f;
     [SerializeField] GameObject camOrient;
     [SerializeField] GameObject fruit;
+    [SerializeField] AudioClip throwSound;
+    [SerializeField] AudioClip crashSound;
+    private AudioSource audio;
+    private AudioSource crashAudio;
     private float _fruitCoolDown = 2;
     private const int DESTROY_FOOD_AFTER = 3;
     private Animator _animator;
@@ -28,6 +32,16 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+
+        audio = gameObject.AddComponent<AudioSource>();
+        audio.playOnAwake = false;
+        audio.clip = throwSound;
+        audio.Stop();
+
+        crashAudio = gameObject.AddComponent<AudioSource>();
+        crashAudio.playOnAwake = false;
+        crashAudio.clip = crashSound;
+        crashAudio.Stop();
     }
     void Update()
     {
@@ -93,6 +107,8 @@ public class PlayerControl : MonoBehaviour
 
         Destroy(obj, DESTROY_FOOD_AFTER);
 
+        Debug.Log("Play sound");
+        audio.Play();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -110,6 +126,8 @@ public class PlayerControl : MonoBehaviour
             Destroy(collision.collider.gameObject);
             AnimalSpawner.animals.Remove(collision.collider.gameObject);
             GameUI.remainingLife -= 1;
+
+            crashAudio.Play();
         }
 
     }

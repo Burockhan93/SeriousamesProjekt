@@ -37,8 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ThrowObjects.cs" />
+     <Compile Include="Assets\Scripts\BackgroundAudioControl.cs" />
      <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorToggle.cs" />
      <Compile Include="Assets\Scripts\FoodTrigger.cs" />
+     <Compile Include="Assets\Scripts\StaticClass.cs" />
      <Compile Include="Assets\Scripts\CamBehaviour.cs" />
      <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorController.cs" />
      <Compile Include="Assets\Scripts\AdvancedBanana.cs" />
@@ -46,10 +48,9 @@
      <Compile Include="Assets\Scripts\GameUI.cs" />
      <Compile Include="Assets\Scripts\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\AnimalSpawner.cs" />
+     <Compile Include="Assets\Scripts\EndScreenControl.cs" />
      <Compile Include="Assets\Scripts\AnimalTrigger.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
-     <Compile Include="Assets\Scripts\StaticClass.cs" />
-     <Compile Include="Assets\Scripts\EndScreenControl.cs" />
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

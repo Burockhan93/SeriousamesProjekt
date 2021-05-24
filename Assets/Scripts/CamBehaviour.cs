@@ -36,7 +36,7 @@ public class CamBehaviour : MonoBehaviour
         float vertical = Input.GetAxis("Mouse Y") * camSpeed;
         if (isInvert)  //invert
         {
-            camOrient.transform.Rotate(vertical / 4, 0, 0); // 4 ist willkürlich. Es beeinflusst die Sensitivität
+            camOrient.transform.Rotate(vertical / 4, 0, 0); // 4 ist willkï¿½rlich. Es beeinflusst die Sensitivitï¿½t
                                                        
         }
         else

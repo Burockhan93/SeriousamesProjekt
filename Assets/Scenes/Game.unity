@@ -6938,6 +6938,7 @@ GameObject:
   - component: {fileID: 1700456037}
   - component: {fileID: 1700456036}
   - component: {fileID: 1700456035}
+  - component: {fileID: 1700456039}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7060,6 +7061,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1700456039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700456033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57793036221c184ea59410d849354a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 606910ec401804eb09925f0d57909c04, type: 3}
 --- !u!1001 &1705711000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8743,5 +8757,13 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1456600551}
+    - target: {fileID: 559701340854571739, guid: 1d84d5c1a9ae5464eaa652ddbf657cee, type: 3}
+      propertyPath: crashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 913d6445ee8cc4152a9c18da590ee203, type: 3}
+    - target: {fileID: 559701340854571739, guid: 1d84d5c1a9ae5464eaa652ddbf657cee, type: 3}
+      propertyPath: throwSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 113ee460fadc340e4957a7404a9fbb27, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d84d5c1a9ae5464eaa652ddbf657cee, type: 3}
