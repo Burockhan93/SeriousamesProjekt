@@ -52,6 +52,7 @@ public class ButtonBehaviour : MonoBehaviour
 
         StaticClass.gameDifficulty = 0;
         Debug.Log("Select gameMode Default");
+        navigateToGame();
     }
     public void selectFastGamemode()
     {
@@ -61,6 +62,7 @@ public class ButtonBehaviour : MonoBehaviour
 
         StaticClass.gameDifficulty = 1;
         Debug.Log("Select gameMode Fast");
+        navigateToGame();
     }
     public void selectHardcoreGamemode()
     {
@@ -70,5 +72,6 @@ public class ButtonBehaviour : MonoBehaviour
 
         StaticClass.gameDifficulty = 2;
         Debug.Log("Select gameMode Hardcore");
+        navigateToGame();
     }
 }
