@@ -19,7 +19,7 @@ public class AdvancedAnimal : MonoBehaviour
         }
         else
         {
-            _step = SPEED * StaticClass.gameDifficulty;
+            _step = SPEED * StaticClass.gameDifficulty/2;
         }
     }
 
@@ -27,7 +27,7 @@ public class AdvancedAnimal : MonoBehaviour
     void Update()
     {
         //move the animals towards the player
-        transform.position = Vector3.MoveTowards(transform.position, _player.position, SPEED * _step*Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.position, _step*Time.deltaTime);
         
         //keep the eyes at the player
         transform.LookAt(_player.position);
@@ -54,7 +54,7 @@ public class AdvancedAnimal : MonoBehaviour
             }
             else if (!cmp)
             {
-                Destroy(other.gameObject, 0.3f);
+                other.gameObject.SetActive(false);
             }
         }
 

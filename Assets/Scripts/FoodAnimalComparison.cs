@@ -18,9 +18,17 @@ public class FoodAnimalComparison : MonoBehaviour
                 return false;
             }
 
-        } else {
+        } else if ((nameAnimal == "beagle") || (nameAnimal == "shepherd")) {
 
-            return false;
+            if ((nameFood == "bone") || (nameFood == "steak") || (nameFood == "cookie"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+        else { return false; }
     }
 }

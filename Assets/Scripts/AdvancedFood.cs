@@ -5,6 +5,7 @@ using UnityEngine;
 public class AdvancedFood : MonoBehaviour
 {
     public string name;
+    public Sprite symbol;
     private const int FOOD_SPEED = 20;
 
     void Update()
@@ -13,10 +14,11 @@ public class AdvancedFood : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Border")
+        if (other.gameObject.tag == "Border" || other.gameObject.tag == "Animal")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+        
     }
 
 

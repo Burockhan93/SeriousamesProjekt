@@ -126,3 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: banana
+  symbol: {fileID: 21300000, guid: 1625d0d3d225e0b4891580d9409c6cc3, type: 3}

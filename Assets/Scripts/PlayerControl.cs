@@ -16,11 +16,17 @@ public class PlayerControl : MonoBehaviour
     private float _fruitCoolDown = 2;
     private const int DESTROY_FOOD_AFTER = 3;
     private Animator _animator;
+
+    public FruitPool fruitPool;
+
     public UnityEvent<float> onWalkingInput;
+    public static UnityEvent<float> onScrollInput;
 
     private void Awake()
     {
         onWalkingInput = new UnityEvent<float>();
+        onScrollInput = new UnityEvent<float>();
+
         onWalkingInput.AddListener(Walk);
     }
 
@@ -77,15 +83,16 @@ public class PlayerControl : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 10 * Time.deltaTime);
 
         }
-
-
         InvokeWalkingEvent();
 
         //animationen, die werden noch verbessert. Zurzeit l�uft er nur
         //_animator.SetFloat("Speed_f", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal")))); // Wenn das Player sich bewegt, summirieren wir die Werte von beiden Axis und setzen wir die Wert ins Speed_f ein. Diese Parameter ist f�r die "Running Animation" verantwortlich
         //_animator.SetBool("Static_b", false); // Sollte man Static state "Static_b" false setzt, erf�llt man eine Voraussetzung f�r "Runinng animation". Die andere ist : Speed_f >=0.5f
 
-
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            onScrollInput.Invoke(Input.mouseScrollDelta.y);
+        }
 
     }
 
@@ -96,19 +103,6 @@ public class PlayerControl : MonoBehaviour
         if (walkingValue < 0.5f) return;
 
         onWalkingInput.Invoke(walkingValue);
-    }
-
-    void throwFruit()
-    {
-        // GameObject obj = Instantiate(fruit, transform.position, transform.rotation);
-        GameObject obj = Instantiate(GameUI.selectedFood, transform.position, transform.rotation);
-
-        _fruitCoolDown = 2;
-
-        Destroy(obj, DESTROY_FOOD_AFTER);
-
-        Debug.Log("Play sound");
-        audio.Play();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -123,26 +117,78 @@ public class PlayerControl : MonoBehaviour
             transform.position = new Vector3(1.22f, 0, -11.9f);
         }
     }
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.tag == "Border")
-        {
-            Debug.Log("Collison with player ");
-            Debug.Log(collision.collider.gameObject);
-            Debug.Log(gameObject);
-        }
-        else
-        {
-            //animal collision
-            Debug.Log("Animal collision.");
-            Destroy(collision.collider.gameObject);
-            AnimalSpawner.animals.Remove(collision.collider.gameObject);
-            GameUI.remainingLife -= 1;
 
-            crashAudio.Play();
-        }
+    void throwFruit()
+    {
+        GameObject spawnedFruit = spawnFruit();
+        spawnedFruit.SetActive(true);
+        spawnedFruit.transform.position = transform.position;
+        spawnedFruit.transform.rotation = transform.rotation;
+        _fruitCoolDown = 2;
+        
 
     }
+    GameObject spawnFruit()
+    {
+        audio.Play();
+        
+        GameObject spawnFruit;
+
+        string idx = GameUI.selectedFood.name;
+
+        switch (idx)
+        {
+            case "banana":
+                spawnFruit = fruitPool.fruitPool["banana"].Dequeue();
+                fruitPool.fruitPool["banana"].Enqueue(spawnFruit);
+                return spawnFruit;
+                break;
+            case "bone":
+                spawnFruit = fruitPool.fruitPool["bone"].Dequeue();
+                fruitPool.fruitPool["bone"].Enqueue(spawnFruit);
+                return spawnFruit;
+                break;
+            case "cookie":
+                spawnFruit = fruitPool.fruitPool["cookie"].Dequeue();
+                fruitPool.fruitPool["cookie"].Enqueue(spawnFruit);
+                return spawnFruit;
+                break;
+            case "apple":
+                spawnFruit = fruitPool.fruitPool["apple"].Dequeue();
+                fruitPool.fruitPool["apple"].Enqueue(spawnFruit);
+                return spawnFruit;
+                break;
+            case "steak":
+                spawnFruit = fruitPool.fruitPool["steak"].Dequeue();
+                fruitPool.fruitPool["steak"].Enqueue(spawnFruit);
+                return spawnFruit;
+                break;
+            default:
+                return null;
+
+        }
+        
+    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.collider.gameObject.tag == "Border")
+    //    {
+    //        Debug.Log("Collison with player ");
+    //        Debug.Log(collision.collider.gameObject);
+    //        Debug.Log(gameObject);
+    //    }
+    //    else
+    //    {
+    //        //animal collision
+    //        Debug.Log("Animal collision.");
+    //        Destroy(collision.collider.gameObject);
+    //        AnimalSpawner.animals.Remove(collision.collider.gameObject);
+    //        GameUI.remainingLife -= 1;
+
+    //        crashAudio.Play();
+    //    }
+
+    //}
 
 
 }

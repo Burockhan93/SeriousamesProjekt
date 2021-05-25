@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\AdvancedAnimal.cs" />
     <Compile Include="Assets\Scripts\AnimalPool.cs" />
     <Compile Include="Assets\Scripts\FoodAnimalComparison.cs" />
+    <Compile Include="Assets\Scripts\FruitPool.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />

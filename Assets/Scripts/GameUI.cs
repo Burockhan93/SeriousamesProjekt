@@ -11,13 +11,18 @@ public class GameUI : MonoBehaviour
     public Text remainingLifeText;
     public Text foodText;
     public Text scoreText;
-    public GameObject[] food;
+    public AdvancedFood[] food;
+    public FruitPool fruitPool;
+    public GameObject panel;
 
-    public static GameObject selectedFood;
+    public static AdvancedFood selectedFood;
     private static int foodPointer = 0;
     //TODO change to less life points
     public const int MAX_LIFE = 10;
     public static int remainingLife = 0;
+
+    private Sprite[] itemImage = new Sprite[5];
+    private int itemPointer =0;
 
 
     // Start is called before the first frame update
@@ -26,7 +31,16 @@ public class GameUI : MonoBehaviour
         initGame();
         remainingLifeText.text = remainingLife.ToString();
 
-        changeFood(0);
+        //changeFood(0);
+
+        PlayerControl.onScrollInput.AddListener(changeFoodNew);
+
+        selectedFood = food[0];
+        itemImage[0] = food[0].GetComponent<AdvancedFood>().symbol;
+        itemImage[1] = food[1].GetComponent<AdvancedFood>().symbol;
+        itemImage[2] = food[2].GetComponent<AdvancedFood>().symbol;
+        itemImage[3] = food[3].GetComponent<AdvancedFood>().symbol;
+        itemImage[4] = food[4].GetComponent<AdvancedFood>().symbol;
     }
 
     public static void initGame(){
@@ -34,11 +48,11 @@ public class GameUI : MonoBehaviour
         foodPointer = 0;
         StaticClass.score = 0;
 
-        for (var i = 0; i < AnimalSpawner.animals.Count; i++)
-        {
-            Destroy(AnimalSpawner.animals[i]);
-        }
-        AnimalSpawner.animals = new List<GameObject>();
+        //for (var i = 0; i < AnimalSpawner.animals.Count; i++)
+        //{
+        //    Destroy(AnimalSpawner.animals[i]);
+        //}
+        //AnimalSpawner.animals = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -62,36 +76,57 @@ public class GameUI : MonoBehaviour
             SceneManager.LoadScene("EndScreen");
         }
 
-        //change selected item
-        if (Input.mouseScrollDelta.y != 0)
+        ////change selected item
+        //if (Input.mouseScrollDelta.y != 0)
+        //{
+        //    Debug.Log("Scroll " + (int)Input.mouseScrollDelta.y);
+        //    changeFood((int)Input.mouseScrollDelta.y);
+        //}
+
+    }
+    void changeFoodNew(float f)
+    {
+         
+        Debug.Log("item:  "+itemPointer);
+
+        if (f > 0 && itemPointer < itemImage.Length-1)
         {
-            Debug.Log("Scroll " + (int)Input.mouseScrollDelta.y);
-            changeFood((int)Input.mouseScrollDelta.y);
+            itemPointer++;
+            
+        }
+        else if(f<0 && itemPointer > 0)
+        {
+            itemPointer--;
+            
         }
 
+        panel.GetComponent<Image>().sprite = itemImage[itemPointer];
+        selectedFood = food[itemPointer];
+
+
     }
 
 
-    public void changeFood(int direction)
-    {
-        //modulo to scroll up/down
-        foodPointer = mod(foodPointer + direction, food.Length);
-        Debug.Log("Länge " + food.Length + "; pointer " + foodPointer);
+    //public void changeFood(int direction)
+    //{
+    //    //modulo to scroll up/down
+    //    foodPointer = mod(foodPointer + direction, food.Length);
+    //    Debug.Log("Länge " + food.Length + "; pointer " + foodPointer);
 
-        //change food
-        selectedFood = food[foodPointer];
+    //    //change food
+    //    selectedFood = food[foodPointer];
 
-        //change the food image
-        //foodImage.MeshRenderer.Materials = selectedFood.Material;
-        //foodImage.GetComponent<MeshRenderer>().material = selectedFood.GetComponent<MeshRenderer>().sharedMaterial;
-        foodText.text = selectedFood.name;
+    //    //change the food image
+    //    //foodImage.MeshRenderer.Materials = selectedFood.Material;
+    //    //foodImage.GetComponent<MeshRenderer>().material = selectedFood.GetComponent<MeshRenderer>().sharedMaterial;
+    //    foodText.text = selectedFood.name;
 
-    }
+    //}
 
-    int mod(int a, int b)
-    {
-        int r = a % b;
-        return r < 0 ? r + b : r;
-    }
+    //int mod(int a, int b)
+    //{
+    //    int r = a % b;
+    //    return r < 0 ? r + b : r;
+    //}
 
 }

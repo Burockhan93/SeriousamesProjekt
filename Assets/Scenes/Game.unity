@@ -133,6 +133,65 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 408904, guid: 4cc487e002327cb43995ca1871bd142e, type: 3}
   m_PrefabInstance: {fileID: 1705711000}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &60870870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60870872}
+  - component: {fileID: 60870871}
+  m_Layer: 0
+  m_Name: FruitPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &60870871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60870870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a168d0d260a7d4da9a10d8219055ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - name: banana
+    fruit: {fileID: 1180137445707430, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
+    size: 5
+  - name: bone
+    fruit: {fileID: 157538, guid: 1f17d257118ec324ca772c5b2bacbb14, type: 3}
+    size: 5
+  - name: cookie
+    fruit: {fileID: 100000, guid: 10d25933610222845ad3760a855829c4, type: 3}
+    size: 5
+  - name: apple
+    fruit: {fileID: 101770, guid: c13306d1f1d9a1a489199ef77f9dba89, type: 3}
+    size: 5
+  - name: steak
+    fruit: {fileID: 116614, guid: 9f063c5e5835cbd4b8dc54a6c0b45db4, type: 3}
+    size: 5
+--- !u!4 &60870872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60870870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5073786, y: 1.1049418, z: -14.397127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &66789748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1347,6 +1406,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc487e002327cb43995ca1871bd142e, type: 3}
+--- !u!1 &316342403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316342406}
+  - component: {fileID: 316342405}
+  - component: {fileID: 316342404}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &316342404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316342403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1625d0d3d225e0b4891580d9409c6cc3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &316342405
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316342403}
+  m_CullTransparentMesh: 1
+--- !u!224 &316342406
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316342403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1723290474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 5.157, y: -25.047}
+  m_SizeDelta: {x: -66.815, y: 50.095}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &320284405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1719,6 +1853,12 @@ MonoBehaviour:
     size: 5
   - name: rooster
     animal: {fileID: 127534, guid: 3fe800c166ae0d04881a20247bde736d, type: 3}
+    size: 5
+  - name: beagle
+    animal: {fileID: 187040, guid: 05554c72f25b7364caea91a88803135d, type: 3}
+    size: 5
+  - name: shepherd
+    animal: {fileID: 180406, guid: 3b3cb28f974c42c4481d72da460937c9, type: 3}
     size: 5
 --- !u!4 &355382449
 Transform:
@@ -2426,7 +2566,7 @@ GameObject:
   - component: {fileID: 502735302}
   - component: {fileID: 502735301}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ScoreText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,7 +2734,7 @@ GameObject:
   - component: {fileID: 567342752}
   - component: {fileID: 567342751}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ItemText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7010,7 +7150,7 @@ GameObject:
   - component: {fileID: 1653257865}
   - component: {fileID: 1653257864}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LifeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7218,19 +7358,21 @@ MonoBehaviour:
   foodText: {fileID: 1723290472}
   scoreText: {fileID: 1946777323}
   food:
-  - {fileID: 1180137445707430, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
-  - {fileID: 157538, guid: 1f17d257118ec324ca772c5b2bacbb14, type: 3}
-  - {fileID: 100000, guid: 10d25933610222845ad3760a855829c4, type: 3}
-  - {fileID: 100000, guid: f9125fa89572f1e40bb082978a85b951, type: 3}
-  - {fileID: 160006, guid: 245ebd2bf811d4f45a1d5dcd8c327131, type: 3}
-  - {fileID: 101770, guid: c13306d1f1d9a1a489199ef77f9dba89, type: 3}
-  - {fileID: 126446, guid: c2f4b43f266dc11439efef86830dafb4, type: 3}
-  - {fileID: 181360, guid: bd519f706f8c5cf4dad9fed04ab5b64b, type: 3}
-  - {fileID: 120208, guid: 4949a22a2c444b0459d7289aae77be28, type: 3}
-  - {fileID: 100000, guid: 06cdf427476835b42837c1ca7f8cdbd1, type: 3}
-  - {fileID: 100000, guid: 5b10c1fadcedc4347b929c94cb50d5d3, type: 3}
-  - {fileID: 116614, guid: 9f063c5e5835cbd4b8dc54a6c0b45db4, type: 3}
-  - {fileID: 100000, guid: ca03aa5ab3af9f147aa60e7b8d131fe3, type: 3}
+  - {fileID: -7896249208252597945, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
+  - {fileID: -4590676993918741764, guid: 1f17d257118ec324ca772c5b2bacbb14, type: 3}
+  - {fileID: 5498874545139312521, guid: 10d25933610222845ad3760a855829c4, type: 3}
+  - {fileID: -6738018128887209143, guid: c13306d1f1d9a1a489199ef77f9dba89, type: 3}
+  - {fileID: 2042393755035095176, guid: 9f063c5e5835cbd4b8dc54a6c0b45db4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fruitPool: {fileID: 60870871}
+  panel: {fileID: 316342403}
 --- !u!114 &1700456036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7304,7 +7446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57793036221c184ea59410d849354a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 606910ec401804eb09925f0d57909c04, type: 3}
+  sound: {fileID: 0}
 --- !u!1001 &1705711000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7448,7 +7590,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 316342406}
   m_Father: {fileID: 1700456034}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9093,6 +9236,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1456600551}
+    - target: {fileID: 559701340854571739, guid: 1d84d5c1a9ae5464eaa652ddbf657cee, type: 3}
+      propertyPath: fruitPool
+      value: 
+      objectReference: {fileID: 60870871}
     - target: {fileID: 559701340854571739, guid: 1d84d5c1a9ae5464eaa652ddbf657cee, type: 3}
       propertyPath: crashSound
       value: 
