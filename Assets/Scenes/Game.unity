@@ -7446,7 +7446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57793036221c184ea59410d849354a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 606910ec401804eb09925f0d57909c04, type: 3}
 --- !u!1001 &1705711000
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class BackgroundAudioControl : MonoBehaviour
         audio.playOnAwake = true;
         audio.clip = sound;
         audio.loop = true;
+        audio.volume = audio.volume / 10; 
         audio.Play();
     }
 
