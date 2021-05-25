@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6328896984654194772}
   - component: {fileID: 2476733423374187100}
   - component: {fileID: 2017661966182529350}
+  - component: {fileID: 9127469137418201906}
   m_Layer: 7
   m_Name: Food_Sandwich_01
   m_TagString: Food
@@ -120,8 +121,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7cc145bdd8de4849a6d58ceda326beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9127469137418201906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8851b71347a5e2438583c9345c95509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: sandwich

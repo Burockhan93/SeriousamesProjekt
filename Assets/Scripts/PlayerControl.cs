@@ -110,7 +110,19 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Play sound");
         audio.Play();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Animal")
+        {
+            other.gameObject.SetActive(false);
+            GameUI.remainingLife -= 1;
+            crashAudio.Play();
+        }
+        else if (other.gameObject.tag == "Border")
+        {
+            transform.position = new Vector3(1.22f, 0, -11.9f);
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Border")

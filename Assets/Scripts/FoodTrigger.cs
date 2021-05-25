@@ -32,7 +32,7 @@ public class FoodTrigger : MonoBehaviour
         else
         {
             //decrease score if player is in hardcore gamemode and destory the animal if the food was wrong
-            if (StaticClass.gameDifficulty == 2)
+            if (StaticClass.gameDifficulty == 3)
             {
                 AnimalSpawner.animals.Remove(collision.collider.gameObject);
                 Destroy(collision.collider.gameObject);

@@ -64,7 +64,7 @@
     <Compile Include="Assets\Scripts\SaveScore.cs" />
     <Compile Include="Assets\Scripts\CamBehaviour.cs" />
     <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorController.cs" />
-    <Compile Include="Assets\Scripts\AdvancedBanana.cs" />
+    <Compile Include="Assets\Scripts\AdvancedFood.cs" />
     <Compile Include="Assets\Scripts\PlayerLook.cs" />
     <Compile Include="Assets\Scripts\GameUI.cs" />
     <Compile Include="Assets\Scripts\ButtonBehaviour.cs" />
@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\AnimalTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\AdvancedAnimal.cs" />
+    <Compile Include="Assets\Scripts\AnimalPool.cs" />
+    <Compile Include="Assets\Scripts\FoodAnimalComparison.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />

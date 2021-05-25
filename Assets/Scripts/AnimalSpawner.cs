@@ -8,6 +8,7 @@ public class AnimalSpawner : MonoBehaviour
     public GameObject plane;
     public GameObject player;
     public GameObject[] animalTypes;
+    public AnimalPool animalPool;
 
     private float rightLimitation = 0;
     private float leftLimitation = 0;
@@ -50,35 +51,104 @@ public class AnimalSpawner : MonoBehaviour
             this.Spawn();
         }
 
-        // calculate distance to move and bring it into the dependency of the selected game difficulty
-        float step = 0;
-        switch (StaticClass.gameDifficulty)
-        {
-            case 1:
-                step = SPEED * Time.deltaTime * 1.5f;
-                break;
-            default:
-                step = SPEED * Time.deltaTime;
-                break;
-        }
+        //// calculate distance to move and bring it into the dependency of the selected game difficulty
+        //float step = 0;
+        //switch (StaticClass.gameDifficulty)
+        //{
+        //    case 1:
+        //        step = SPEED * Time.deltaTime * 1.5f;
+        //        break;
+        //    default:
+        //        step = SPEED * Time.deltaTime;
+        //        break;
+        //}
 
-        for (var i = 0; i < animals.Count; i++)
-        {
-            //move the animals towards the player
-            animals[i].transform.position = Vector3.MoveTowards(animals[i].transform.position, player.transform.position, step);
-            //keep the eyes at the player
-            animals[i].transform.LookAt(player.transform.position);
-        }
+        //for (var i = 0; i < animals.Count; i++)
+        //{
+        //    //move the animals towards the player
+        //    animals[i].transform.position = Vector3.MoveTowards(animals[i].transform.position, player.transform.position, step);
+        //    //keep the eyes at the player
+        //    animals[i].transform.LookAt(player.transform.position);
+        //}
 
     }
 
     void Spawn()
     {
-        GameObject obj;
+        Vector3 spawnPos = spawnPoint();
+        GameObject animal = spawnAnimal();
 
-        Vector3 spawnPosition;
+        animal.SetActive(true);
+        animal.transform.position = spawnPos;
+        animal.transform.rotation = Quaternion.identity;
+       // animalPool.animalPool["chicken"].Enqueue(animal);
 
+        this.counter = 0;
+
+        //GameObject animal = Instantiate(animalTypes[idx], spawnPos, player.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+
+        //animals.Add(obj);
+
+        //this.counter = 0f;
+    }
+
+    GameObject spawnAnimal()
+    {
+        GameObject animal;
+        int idx = Random.Range(0, animalPool.pools.Count);
+
+        switch (idx)
+        {
+            case 0: animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 1:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 2:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 3:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 4:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 5:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 6:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            case 7:
+                animal = animalPool.animalPool["chicken"].Dequeue();
+                animalPool.animalPool["chicken"].Enqueue(animal);
+                return animal;
+                break;
+            default:
+                break;
+        }
+
+        return null;
+    }
+
+    Vector3 spawnPoint()
+    {
         int side = Random.Range(0, 4);
+        Vector3 spawnPosition;
 
         int x = Random.Range((int)leftLimitation, (int)rightLimitation);
         int y = Random.Range((int)frontLimitation, (int)backLimitation);
@@ -99,12 +169,10 @@ public class AnimalSpawner : MonoBehaviour
                 break;
         }
 
-        int idx = Random.Range(0, animalTypes.Length);
-        obj = Instantiate(animalTypes[idx], spawnPosition, player.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
-        animals.Add(obj);
-
-        this.counter = 0f;
+        return spawnPosition;
     }
+
+
 
 
 }

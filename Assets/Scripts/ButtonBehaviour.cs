@@ -50,7 +50,7 @@ public class ButtonBehaviour : MonoBehaviour
         buttonFast.interactable = true;
         buttonHardcore.interactable = true;
 
-        StaticClass.gameDifficulty = 0;
+        StaticClass.gameDifficulty = 1;
         Debug.Log("Select gameMode Default");
         navigateToGame();
     }
@@ -60,7 +60,7 @@ public class ButtonBehaviour : MonoBehaviour
         buttonFast.interactable = false;
         buttonHardcore.interactable = true;
 
-        StaticClass.gameDifficulty = 1;
+        StaticClass.gameDifficulty = 2;
         Debug.Log("Select gameMode Fast");
         navigateToGame();
     }
@@ -70,7 +70,7 @@ public class ButtonBehaviour : MonoBehaviour
         buttonFast.interactable = true;
         buttonHardcore.interactable = false;
 
-        StaticClass.gameDifficulty = 2;
+        StaticClass.gameDifficulty = 3;
         Debug.Log("Select gameMode Hardcore");
         navigateToGame();
     }

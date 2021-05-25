@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamBehaviour : MonoBehaviour
 {
     public GameObject player;
+    public Transform transfix;
     public Transform camOrient;//camorient ist eien transformation, die die Bewegung vom Player imitiert.
 
     public Vector3 cam;
@@ -33,16 +34,16 @@ public class CamBehaviour : MonoBehaviour
      
         float horizontal = Input.GetAxis("Mouse X") * camSpeed;
         camOrient.transform.Rotate(0, horizontal, 0);
-        float vertical = Input.GetAxis("Mouse Y") * camSpeed;
-        if (isInvert)  //invert
-        {
-            camOrient.transform.Rotate(vertical / 4, 0, 0); // 4 ist willk�rlich. Es beeinflusst die Sensitivit�t
+        //float vertical = Input.GetAxis("Mouse Y") * camSpeed;
+        //if (isInvert)  //invert
+        //{
+        //    camOrient.transform.Rotate(vertical / 4, 0, 0); // 4 ist willk�rlich. Es beeinflusst die Sensitivit�t
                                                        
-        }
-        else
-        {
-            camOrient.transform.Rotate(-vertical / 4, 0, 0);
-        }
+        //}
+        //else
+        //{
+        //    camOrient.transform.Rotate(-vertical / 4, 0, 0);
+        //}
 
         //move the camera based on rotation
 
@@ -69,6 +70,6 @@ public class CamBehaviour : MonoBehaviour
         }
 
         // Schau immer den Player an
-        transform.LookAt(player.transform);
+        transform.LookAt(transfix);
     }
 }
