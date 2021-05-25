@@ -18,7 +18,7 @@ public class GameUI : MonoBehaviour
     public static AdvancedFood selectedFood;
     private static int foodPointer = 0;
     //TODO change to less life points
-    public const int MAX_LIFE = 10;
+    public const int MAX_LIFE = 5;
     public static int remainingLife = 0;
 
     private Sprite[] itemImage = new Sprite[5];

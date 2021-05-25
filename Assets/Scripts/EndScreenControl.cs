@@ -13,13 +13,13 @@ public class EndScreenControl : MonoBehaviour
         FinalScoreText.text = Mathf.Round(StaticClass.score).ToString();
 
         //check if score is higher than the current highscore
-        float bestScore = SaveScore.loadHighscore();
+        float bestScore = SaveScore.loadHighscore("overallHighscore_" + StaticClass.gameDifficulty);
 
         if (bestScore < StaticClass.score)
         {
-            SaveScore.saveHighscore(StaticClass.score);
+            SaveScore.saveHighscore("overallHighscore_" + StaticClass.gameDifficulty,StaticClass.score);
         }
-        BestScoreText.text = Mathf.Round(SaveScore.loadHighscore()).ToString();
+        BestScoreText.text = Mathf.Round(SaveScore.loadHighscore("overallHighscore_" + StaticClass.gameDifficulty)).ToString();
     }
 
     // Update is called once per frame
