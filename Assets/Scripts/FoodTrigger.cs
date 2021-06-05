@@ -38,8 +38,11 @@ public class FoodTrigger : MonoBehaviour
                 Destroy(collision.collider.gameObject);
 
                 //decrease points to score
-                //TODO kann der Score negativ sein?
                 StaticClass.score -= 5;
+                //score shouldn't be zero
+                if(StaticClass.score < 0){
+                    StaticClass.score = 0;
+                }
             }
         }
 
