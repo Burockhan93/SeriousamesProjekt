@@ -23,13 +23,18 @@ public class CamBehaviour : MonoBehaviour
         camOrient.transform.position = player.transform.position;       
         camOrient.transform.parent = null;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        
 
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (!StaticClass.runGame)
+        {
+            return;
+        }
+        
         camOrient.transform.position = player.transform.position;// camorient orientiert sich nach dem Player
      
         float horizontal = Input.GetAxis("Mouse X") * camSpeed;

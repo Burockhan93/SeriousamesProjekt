@@ -58,6 +58,11 @@ public class GameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!StaticClass.runGame)
+        {
+            return;
+        }
+
         //increase score by time
         StaticClass.score += Time.deltaTime;
         scoreText.text = Mathf.Round(StaticClass.score).ToString();
@@ -73,6 +78,7 @@ public class GameUI : MonoBehaviour
             // Cursor.lockState = CursorLockMode.None;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            StaticClass.runGame = false;
             SceneManager.LoadScene("EndScreen");
         }
 

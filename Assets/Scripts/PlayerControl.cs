@@ -51,6 +51,11 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
+        if (!StaticClass.runGame)
+        {
+            return;
+        }
+        
         // if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) return;
         if (Input.GetKeyDown(KeyCode.Space) && _fruitCoolDown >= 2)
         {
@@ -93,7 +98,6 @@ public class PlayerControl : MonoBehaviour
         {
             onScrollInput.Invoke(Input.mouseScrollDelta.y);
         }
-
     }
 
     private void InvokeWalkingEvent()
@@ -125,13 +129,13 @@ public class PlayerControl : MonoBehaviour
         spawnedFruit.transform.position = transform.position;
         spawnedFruit.transform.rotation = transform.rotation;
         _fruitCoolDown = 2;
-        
+
 
     }
     GameObject spawnFruit()
     {
         audio.Play();
-        
+
         GameObject spawnFruit;
 
         string idx = GameUI.selectedFood.name;
@@ -167,7 +171,7 @@ public class PlayerControl : MonoBehaviour
                 return null;
 
         }
-        
+
     }
     //void OnCollisionEnter(Collision collision)
     //{

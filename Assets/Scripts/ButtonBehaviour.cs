@@ -10,8 +10,8 @@ public class ButtonBehaviour : MonoBehaviour
     [SerializeField] Button buttonDefault;
     [SerializeField] Button buttonFast;
     [SerializeField] Button buttonHardcore;
-
-
+    [SerializeField] GameObject GamePanel;
+    [SerializeField] GameObject InstructionPanel;
 
     public void navigateToEndscreen()
     {
@@ -29,12 +29,11 @@ public class ButtonBehaviour : MonoBehaviour
     public void navigateToGame()
     {
         Debug.Log("Navigate to Game");
-        //set curser
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
 
         //reset the game
         GameUI.initGame();
+        // GamePanel.SetActive(false);
+        // InstructionPanel.SetActive(true);
         SceneManager.LoadScene("Game");
     }
 
@@ -73,5 +72,20 @@ public class ButtonBehaviour : MonoBehaviour
         StaticClass.gameDifficulty = 3;
         Debug.Log("Select gameMode Hardcore");
         navigateToGame();
+    }
+
+    public void startGame()
+    {
+        Debug.Log("startGame");
+
+        GamePanel.gameObject.SetActive(true);
+        InstructionPanel.gameObject.SetActive(false);
+        
+        StaticClass.runGame = true;
+
+        //set curser
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+                // Cursor.lockState = CursorLockMode.Locked;
     }
 }

@@ -38,7 +38,11 @@ public class AnimalSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!StaticClass.runGame)
+        {
+            return;
+        }
+        
         //increase spawn rate until max freqency of 2 animals per second
         if (this.frequency > 0.5f)
         {
@@ -81,7 +85,7 @@ public class AnimalSpawner : MonoBehaviour
         animal.SetActive(true);
         animal.transform.position = spawnPos;
         animal.transform.rotation = Quaternion.identity;
-       // animalPool.animalPool["chicken"].Enqueue(animal);
+        // animalPool.animalPool["chicken"].Enqueue(animal);
 
         this.counter = 0;
 
@@ -99,7 +103,8 @@ public class AnimalSpawner : MonoBehaviour
 
         switch (idx)
         {
-            case 0: animal = animalPool.animalPool["chicken"].Dequeue();
+            case 0:
+                animal = animalPool.animalPool["chicken"].Dequeue();
                 animalPool.animalPool["chicken"].Enqueue(animal);
                 return animal;
                 break;
