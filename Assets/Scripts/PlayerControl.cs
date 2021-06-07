@@ -57,11 +57,12 @@ public class PlayerControl : MonoBehaviour
         }
         
         // if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) return;
-        if (Input.GetKeyDown(KeyCode.Space) && _fruitCoolDown >= 2)
+        if (Input.GetKeyDown(KeyCode.Space) && _fruitCoolDown <= 2)
         {
-            _fruitCoolDown -= Time.deltaTime;
+           
             throwFruit();
         }
+        _fruitCoolDown -= Time.deltaTime;
 
         // Get the horizontal and vertical axis.
         // By default they are mapped to the arrow keys.
@@ -124,11 +125,18 @@ public class PlayerControl : MonoBehaviour
 
     void throwFruit()
     {
+
+        if (SetAnimalFood.foods[GameUI.itemPointer] == false)
+        {
+            _fruitCoolDown = 4;
+            return;
+        }
+        
         GameObject spawnedFruit = spawnFruit();
         spawnedFruit.SetActive(true);
         spawnedFruit.transform.position = transform.position;
         spawnedFruit.transform.rotation = transform.rotation;
-        _fruitCoolDown = 2;
+        _fruitCoolDown = 4;
 
 
     }
@@ -139,6 +147,8 @@ public class PlayerControl : MonoBehaviour
         GameObject spawnFruit;
 
         string idx = GameUI.selectedFood.name;
+
+        
 
         switch (idx)
         {

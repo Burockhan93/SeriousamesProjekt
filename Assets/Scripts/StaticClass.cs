@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public static class StaticClass
 {
     public static float score { get; set; }
@@ -5,4 +7,5 @@ public static class StaticClass
     public static int gameDifficulty { get; set; }
 
     public static bool runGame { get; set; }
+
 }

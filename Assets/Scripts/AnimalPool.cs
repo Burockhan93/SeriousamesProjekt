@@ -12,16 +12,19 @@ public class AnimalPool : MonoBehaviour
         public int size;
         
     }
+    int counter;
 
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> animalPool;
     // Start is called before the first frame update
     void Start()
     {
+        
         animalPool = new Dictionary<string, Queue<GameObject>>();
 
         foreach(Pool pool in pools)
         {
+            
             Queue<GameObject> spawnPool = new Queue<GameObject>();
 
             for (int i=0; i<pool.size; i++)
@@ -29,6 +32,7 @@ public class AnimalPool : MonoBehaviour
                 GameObject animal = Instantiate(pool.animal);
                 animal.SetActive(false);
                 spawnPool.Enqueue(animal);
+                Debug.Log(animal);
             }
 
             animalPool.Add(pool.name, spawnPool);

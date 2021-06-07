@@ -10,8 +10,6 @@ public class FruitPool : MonoBehaviour
         public string name;
         public GameObject fruit;
         public int size;
-        
-
     }
 
     public List<Pool> pools;
@@ -19,6 +17,7 @@ public class FruitPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         fruitPool = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)

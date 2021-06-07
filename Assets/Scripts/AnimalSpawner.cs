@@ -82,6 +82,7 @@ public class AnimalSpawner : MonoBehaviour
         Vector3 spawnPos = spawnPoint();
         GameObject animal = spawnAnimal();
 
+        if (animal == null) return;
         animal.SetActive(true);
         animal.transform.position = spawnPos;
         animal.transform.rotation = Quaternion.identity;
@@ -100,6 +101,7 @@ public class AnimalSpawner : MonoBehaviour
     {
         GameObject animal;
         int idx = Random.Range(0, animalPool.pools.Count);
+        if (SetAnimalFood.animals[idx] == false) return null;
 
         switch (idx)
         {

@@ -16,18 +16,21 @@ public class GameUI : MonoBehaviour
     public GameObject panel;
 
     public static AdvancedFood selectedFood;
+    public static int itemPointer { get; private set; }
+
     private static int foodPointer = 0;
     //TODO change to less life points
     public const int MAX_LIFE = 5;
     public static int remainingLife = 0;
 
     private Sprite[] itemImage = new Sprite[5];
-    private int itemPointer =0;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
+        itemPointer = 0;
         initGame();
         remainingLifeText.text = remainingLife.ToString();
 
