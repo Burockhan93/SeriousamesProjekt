@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AdvancedAnimal : MonoBehaviour
 {
-    public string name;
     private Transform _player;
     private const int SPEED = 5;
     private float _step = 0;
@@ -39,9 +38,35 @@ public class AdvancedAnimal : MonoBehaviour
         if (other.gameObject.tag == "Food")
         {
             Debug.Log("Food found");
-            foodName = other.GetComponent<AdvancedFood>().name;
-            // eine Method von einer statischen neuen Klasse, welche dafür sorgt, ob das Essen zum Tier passt
-            bool cmp = FoodAnimalComparison.compare(this.name, foodName);
+            //foodName = other.GetComponent<AdvancedFood>().name;
+            // eine Method von einer statischen neuen Klasse, welche dafï¿½r sorgt, ob das Essen zum Tier passt
+            //bool cmp = FoodAnimalComparison.compare(this.name, foodName);
+            //check if the food is tagged inside the animal body
+            bool cmp = false;
+            Debug.Log(gameObject);
+            Debug.Log(other.gameObject);
+
+            foreach (var item in StaticClass.animals)
+            {
+                // Debug.Log(item.animal.name + " " + gameObject.name);
+                if(item.animal.name == gameObject.name){
+                    Debug.Log("Found animal");
+                    foreach (var food in item.food)
+                    {
+                        if(food.name == other.gameObject.name){
+                            Debug.Log("Hit correct food");
+                            cmp = true;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            // if(StaticClass.animals.Get(this).Contains(other)){
+            //     cmp = true;
+            // } 
+
             if (cmp)
             {
                 this.gameObject.SetActive(false);

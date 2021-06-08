@@ -8,4 +8,7 @@ public static class StaticClass
 
     public static bool runGame { get; set; }
 
+    public static List<Animals> animals { get; set; }
+    public static List<Food> food { get; set; }
+
 }

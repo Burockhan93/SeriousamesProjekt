@@ -55,11 +55,11 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
-        
+
         // if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) return;
         if (Input.GetKeyDown(KeyCode.Space) && _fruitCoolDown <= 2)
         {
-           
+
             throwFruit();
         }
         _fruitCoolDown -= Time.deltaTime;
@@ -126,19 +126,17 @@ public class PlayerControl : MonoBehaviour
     void throwFruit()
     {
 
-        if (SetAnimalFood.foods[GameUI.itemPointer] == false)
-        {
-            _fruitCoolDown = 3;
-            return;
-        }
-        
+        // if (SetAnimalFood.foods[GameUI.itemPointer] == false)
+        // {
+        //     _fruitCoolDown = 3;
+        //     return;
+        // }
+
         GameObject spawnedFruit = spawnFruit();
         spawnedFruit.SetActive(true);
         spawnedFruit.transform.position = transform.position;
         spawnedFruit.transform.rotation = transform.rotation;
         _fruitCoolDown = 3;
-
-
     }
     GameObject spawnFruit()
     {
@@ -146,41 +144,44 @@ public class PlayerControl : MonoBehaviour
 
         GameObject spawnFruit;
 
-        string idx = GameUI.selectedFood.name;
+        int idx = GameUI.itemPointer;
 
-        
+        Debug.Log("fruit with id " + idx);
+        spawnFruit = fruitPool.fruitPool[idx].Dequeue();
+        fruitPool.fruitPool[idx].Enqueue(spawnFruit);
+        return spawnFruit;
 
-        switch (idx)
-        {
-            case "banana":
-                spawnFruit = fruitPool.fruitPool["banana"].Dequeue();
-                fruitPool.fruitPool["banana"].Enqueue(spawnFruit);
-                return spawnFruit;
-                break;
-            case "bone":
-                spawnFruit = fruitPool.fruitPool["bone"].Dequeue();
-                fruitPool.fruitPool["bone"].Enqueue(spawnFruit);
-                return spawnFruit;
-                break;
-            case "cookie":
-                spawnFruit = fruitPool.fruitPool["cookie"].Dequeue();
-                fruitPool.fruitPool["cookie"].Enqueue(spawnFruit);
-                return spawnFruit;
-                break;
-            case "apple":
-                spawnFruit = fruitPool.fruitPool["apple"].Dequeue();
-                fruitPool.fruitPool["apple"].Enqueue(spawnFruit);
-                return spawnFruit;
-                break;
-            case "steak":
-                spawnFruit = fruitPool.fruitPool["steak"].Dequeue();
-                fruitPool.fruitPool["steak"].Enqueue(spawnFruit);
-                return spawnFruit;
-                break;
-            default:
-                return null;
-
-        }
+        // switch (idx)
+        // {
+        //     case "banana":
+        //         spawnFruit = fruitPool.fruitPool["banana"].Dequeue();
+        //         fruitPool.fruitPool["banana"].Enqueue(spawnFruit);
+        //         return spawnFruit;
+        //         break;
+        //     case "bone":
+        //         spawnFruit = fruitPool.fruitPool["bone"].Dequeue();
+        //         fruitPool.fruitPool["bone"].Enqueue(spawnFruit);
+        //         return spawnFruit;
+        //         break;
+        //     case "cookie":
+        //         spawnFruit = fruitPool.fruitPool["cookie"].Dequeue();
+        //         fruitPool.fruitPool["cookie"].Enqueue(spawnFruit);
+        //         return spawnFruit;
+        //         break;
+        //     case "apple":
+        //         spawnFruit = fruitPool.fruitPool["apple"].Dequeue();
+        //         fruitPool.fruitPool["apple"].Enqueue(spawnFruit);
+        //         return spawnFruit;
+        //         break;
+        //     case "steak":
+        //         spawnFruit = fruitPool.fruitPool["steak"].Dequeue();
+        //         fruitPool.fruitPool["steak"].Enqueue(spawnFruit);
+        //         return spawnFruit;
+        //         break;
+        //     default:
+        //         return null;
+        //
+        //}
 
     }
     //void OnCollisionEnter(Collision collision)

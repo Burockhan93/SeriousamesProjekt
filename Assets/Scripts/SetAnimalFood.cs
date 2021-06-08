@@ -20,7 +20,7 @@ public class SetAnimalFood : MonoBehaviour
 
     public void SetAnimFood()
     {
-
+        /*
         for (int i = 0; i < animaltoggles.Count; i++)
         {
             if (animaltoggles[i].isOn) {
@@ -42,6 +42,7 @@ public class SetAnimalFood : MonoBehaviour
                 foods.Add(false);
             }
         }
+        */
     }
 
     // Update is called once per frame

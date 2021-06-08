@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AdvancedFood : MonoBehaviour
 {
-    public string name;
-    public Sprite symbol;
     private const int FOOD_SPEED = 20;
 
     void Update()

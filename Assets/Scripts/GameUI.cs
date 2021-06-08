@@ -15,7 +15,6 @@ public class GameUI : MonoBehaviour
     public FruitPool fruitPool;
     public GameObject panel;
 
-    public static AdvancedFood selectedFood;
     public static int itemPointer { get; private set; }
 
     private static int foodPointer = 0;
@@ -23,8 +22,8 @@ public class GameUI : MonoBehaviour
     public const int MAX_LIFE = 5;
     public static int remainingLife = 0;
 
-    private Sprite[] itemImage = new Sprite[5];
-    
+    private Sprite[] itemImage;
+
 
 
     // Start is called before the first frame update
@@ -38,18 +37,40 @@ public class GameUI : MonoBehaviour
 
         PlayerControl.onScrollInput.AddListener(changeFoodNew);
 
-        selectedFood = food[0];
-        itemImage[0] = food[0].GetComponent<AdvancedFood>().symbol;
-        itemImage[1] = food[1].GetComponent<AdvancedFood>().symbol;
-        itemImage[2] = food[2].GetComponent<AdvancedFood>().symbol;
-        itemImage[3] = food[3].GetComponent<AdvancedFood>().symbol;
-        itemImage[4] = food[4].GetComponent<AdvancedFood>().symbol;
+        int ctr = 0;
+        foreach (var item in StaticClass.food)
+        {
+            if (item.active)
+            {
+                ctr += 1;
+            }
+        }
+
+        itemImage = new Sprite[ctr];
+        Debug.Log("num of food" + ctr);
+        ctr = 0;
+        foreach (var item in StaticClass.food)
+        {
+            if (item.active)
+            {
+                itemImage[ctr] = item.symbol;
+                ctr += 1;
+            }
+        }
+
+        // itemImage[0] = food[0].GetComponent<AdvancedFood>().symbol;
+        // itemImage[1] = food[1].GetComponent<AdvancedFood>().symbol;
+        // itemImage[2] = food[2].GetComponent<AdvancedFood>().symbol;
+        // itemImage[3] = food[3].GetComponent<AdvancedFood>().symbol;
+        // itemImage[4] = food[4].GetComponent<AdvancedFood>().symbol;
     }
 
-    public static void initGame(){
+    public static void initGame()
+    {
         remainingLife = MAX_LIFE;
         foodPointer = 0;
         StaticClass.score = 0;
+        itemPointer = 0;
 
         //for (var i = 0; i < AnimalSpawner.animals.Count; i++)
         //{
@@ -95,24 +116,22 @@ public class GameUI : MonoBehaviour
     }
     void changeFoodNew(float f)
     {
-         
-        Debug.Log("item:  "+itemPointer);
 
-        if (f > 0 && itemPointer < itemImage.Length-1)
+        Debug.Log("item:  " + itemPointer);
+
+        if (f > 0 && itemPointer < itemImage.Length - 1)
         {
             itemPointer++;
-            
+
         }
-        else if(f<0 && itemPointer > 0)
+        else if (f < 0 && itemPointer > 0)
         {
             itemPointer--;
-            
+
         }
 
         panel.GetComponent<Image>().sprite = itemImage[itemPointer];
-        selectedFood = food[itemPointer];
-
-
+        
     }
 
 

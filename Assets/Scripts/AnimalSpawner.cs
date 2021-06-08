@@ -42,7 +42,7 @@ public class AnimalSpawner : MonoBehaviour
         {
             return;
         }
-        
+
         //increase spawn rate until max freqency of 2 animals per second
         if (this.frequency > 0.5f)
         {
@@ -100,64 +100,70 @@ public class AnimalSpawner : MonoBehaviour
     GameObject spawnAnimal()
     {
         GameObject animal;
-        int idx = Random.Range(0, animalPool.pools.Count);
-        if (SetAnimalFood.animals[idx] == false) return null;
+        int idx = Random.Range(0, animalPool.animalPool.Count);
+        //if (SetAnimalFood.animals[idx] == false) return null;
 
-        switch (idx)
-        {
-            case 0:
-                animal = animalPool.animalPool["chicken"].Dequeue();
-                animalPool.animalPool["chicken"].Enqueue(animal);
-                return animal;
-                break;
-            case 1:
-                animal = animalPool.animalPool["chicken_brown"].Dequeue();
-                animalPool.animalPool["chicken_brown"].Enqueue(animal);
-                return animal;
-                break;
-            case 2:
-                animal = animalPool.animalPool["chicken_white"].Dequeue();
-                animalPool.animalPool["chicken_white"].Enqueue(animal);
-                return animal;
-                break;
-            case 3:
-                animal = animalPool.animalPool["cow_brown"].Dequeue();
-                animalPool.animalPool["cow_brown"].Enqueue(animal);
-                return animal;
-                break;
-            case 4:
-                animal = animalPool.animalPool["cow_white"].Dequeue();
-                animalPool.animalPool["cow_white"].Enqueue(animal);
-                return animal;
-                break;
-            case 5:
-                animal = animalPool.animalPool["horse_black"].Dequeue();
-                animalPool.animalPool["horse_black"].Enqueue(animal);
-                return animal;
-                break;
-            case 6:
-                animal = animalPool.animalPool["horse_brown"].Dequeue();
-                animalPool.animalPool["horse_brown"].Enqueue(animal);
-                return animal;
-                break;
-            case 7:
-                animal = animalPool.animalPool["rooster"].Dequeue();
-                animalPool.animalPool["rooster"].Enqueue(animal);
-                return animal;
-                break;
-            case 8:
-                animal = animalPool.animalPool["beagle"].Dequeue();
-                animalPool.animalPool["beagle"].Enqueue(animal);
-                return animal;
-                break;
-            case 9:
-                animal = animalPool.animalPool["shepherd"].Dequeue();
-                animalPool.animalPool["shepherd"].Enqueue(animal);
-                return animal;
-                break;
-            default:
-                break;
-        }
+        Debug.Log("Spawn animal with idx " + idx);
+        animal = animalPool.animalPool[idx].Dequeue();
+        animalPool.animalPool[idx].Enqueue(animal);
+
+        return animal;
+
+        // switch (idx)
+        // {
+        //     case 0:
+        //         animal = animalPool.animalPool["chicken"].Dequeue();
+        //         animalPool.animalPool["chicken"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 1:
+        //         animal = animalPool.animalPool["chicken_brown"].Dequeue();
+        //         animalPool.animalPool["chicken_brown"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 2:
+        //         animal = animalPool.animalPool["chicken_white"].Dequeue();
+        //         animalPool.animalPool["chicken_white"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 3:
+        //         animal = animalPool.animalPool["cow_brown"].Dequeue();
+        //         animalPool.animalPool["cow_brown"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 4:
+        //         animal = animalPool.animalPool["cow_white"].Dequeue();
+        //         animalPool.animalPool["cow_white"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 5:
+        //         animal = animalPool.animalPool["horse_black"].Dequeue();
+        //         animalPool.animalPool["horse_black"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 6:
+        //         animal = animalPool.animalPool["horse_brown"].Dequeue();
+        //         animalPool.animalPool["horse_brown"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 7:
+        //         animal = animalPool.animalPool["rooster"].Dequeue();
+        //         animalPool.animalPool["rooster"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 8:
+        //         animal = animalPool.animalPool["beagle"].Dequeue();
+        //         animalPool.animalPool["beagle"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     case 9:
+        //         animal = animalPool.animalPool["shepherd"].Dequeue();
+        //         animalPool.animalPool["shepherd"].Enqueue(animal);
+        //         return animal;
+        //         break;
+        //     default:
+        //         break;
+        // }
 
         return null;
     }
