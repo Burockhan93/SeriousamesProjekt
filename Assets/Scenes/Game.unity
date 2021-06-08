@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.8974229, g: 0.77333575, b: 0.304185, a: 1}
+  m_IndirectSpecularColor: {r: 0.8973823, g: 0.7733419, b: 0.30418754, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3927,43 +3927,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-    no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-    amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-    sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-    sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-    dolor sit amet.   \r\n\r\nDuis autem vel eum iriure dolor in hendrerit in vulputate
-    velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-    vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-    delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-    consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-    dolore magna aliquam erat volutpat.   \r\n\r\nUt wisi enim ad minim veniam, quis
-    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-    consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-    molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros
-    et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
-    augue duis dolore te feugait nulla facilisi.   \r\nNam liber tempor cum soluta
-    nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
-    possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-    nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-    lobortis nisl ut aliquip ex ea commodo consequat.   \r\nAt vero eos et accusam
-    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-    sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-    sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-    dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam
-    aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et
-    et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus
-    sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum
-    dolor sit amet, consetetur..."
+  m_Text: "Du bist ein Farmer und deine Tiere wollen gef\xFCttert werden. Aber Achtung,
+    sie wollen mit dem richtigen Essen gef\xFCttert werden. F\xFCtterst du sie nicht
+    und sie ber\xFChren dich, verlierst du ein Leben; f\xFCtterst du sie mit dem
+    richtigen Essen bekommst du Punkte. Du bekommst allerdings auch pro Sekunde einen
+    Punkt, also f\xFCttere die Tiere und \xFCberlebe so lang wie m\xF6glich!\r\n\r\nSteuerung:\r\nMit
+    der Maus gibst du die Richtung an in die der Farmer laufen soll und mit der Leertaste
+    wirft der Farmer das ausgew\xE4hlte Essen auf die Tiere. Mit dem Mausrad kannst
+    du zwischen den Essensarten wechseln und dich mit den Tasten W und S vor- und
+    r\xFCckw\xE4rts bewegen."
 --- !u!222 &735247217
 CanvasRenderer:
   m_ObjectHideFlags: 0

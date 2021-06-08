@@ -128,7 +128,7 @@ public class PlayerControl : MonoBehaviour
 
         if (SetAnimalFood.foods[GameUI.itemPointer] == false)
         {
-            _fruitCoolDown = 4;
+            _fruitCoolDown = 3;
             return;
         }
         
@@ -136,7 +136,7 @@ public class PlayerControl : MonoBehaviour
         spawnedFruit.SetActive(true);
         spawnedFruit.transform.position = transform.position;
         spawnedFruit.transform.rotation = transform.rotation;
-        _fruitCoolDown = 4;
+        _fruitCoolDown = 3;
 
 
     }
