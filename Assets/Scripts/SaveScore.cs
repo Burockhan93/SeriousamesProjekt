@@ -4,6 +4,9 @@ using UnityEngine;
 
 public static class SaveScore
 {
+    //class to save the highscore into the player prefences
+    //the highscore is saved by key/value
+    //the key is overallHighscore_<GAME_MODE> to save a highscore for each different mode
     public static void saveHighscore(string key, float score)
     {
         PlayerPrefs.SetFloat(key, score);

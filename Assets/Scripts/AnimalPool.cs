@@ -10,7 +10,6 @@ public class AnimalPool : MonoBehaviour
         public int id;
         public GameObject animal;
         public int size;
-
     }
 
     public List<Pool> pools;
@@ -21,21 +20,24 @@ public class AnimalPool : MonoBehaviour
         int id = 0;
         animalPool = new Dictionary<int, Queue<GameObject>>();
 
+        //create an animal pool by the definition of the static class, which is defined in the game menu
         foreach (var item in StaticClass.animals)
         {
             if (item.active)
             {
+                //create queue
                 Queue<GameObject> spawnPool = new Queue<GameObject>();
 
                 for (int i = 0; i < item.size; i++)
                 {
+                    //add objects to the queue
                     GameObject animal = Instantiate(item.animal);
                     animal.name = animal.name.Replace("(Clone)", "").Trim();
                     animal.SetActive(false);
                     spawnPool.Enqueue(animal);
-                    Debug.Log(animal);
                 }
 
+                //add the queue to the animal pool
                 animalPool.Add(id, spawnPool);
                 id += 1;
             }

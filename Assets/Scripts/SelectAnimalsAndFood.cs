@@ -21,12 +21,11 @@ public class SelectAnimalsAndFood : MonoBehaviour
         int offset = 0;
         //int y = (int)foodPanel.GetComponent<RectTransform>().anchoredPosition[1];
         int y = 450;
+        //show toggle button on the screen
         foreach (var item in StaticClass.animals)
         {
-            //transform.GetChild(i).gameObject.AddComponent<Toggle>();
-
             GameObject button = (GameObject)Instantiate(toggleButton);
-            
+
             Toggle toggle = button.GetComponent<Toggle>();
             Vector3 offsetPosition = new Vector3(animalPanel.transform.position.x, y + offset, 0);
 
@@ -34,54 +33,45 @@ public class SelectAnimalsAndFood : MonoBehaviour
             offset -= 45;
 
             button.SetActive(true);
+            //set listener to detect changes
             toggle.onValueChanged.AddListener((isSelected) =>
             {
-                Debug.Log("hit toggle");
-                Debug.Log(toggle.isOn);
                 item.active = toggle.isOn;
             });
 
             toggle.isOn = item.active;
 
             button.GetComponent<RectTransform>().SetParent(animalPanel.transform);
-            //button.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 10);
             button.GetComponentInChildren<Text>().text = item.name;
         }
 
         //set reference to static class
         StaticClass.food = food;
 
+        //reset the offset
         offset = 0;
         //y = (int)foodPanel.GetComponent<RectTransform>().anchoredPosition[1];
         y = 450;
+        //show toggle button on the screen
         foreach (var item in StaticClass.food)
         {
-            //transform.GetChild(i).gameObject.AddComponent<Toggle>();
-
             GameObject button = (GameObject)Instantiate(toggleButton);
             Toggle toggle = button.GetComponent<Toggle>();
             Vector3 offsetPosition = new Vector3(foodPanel.transform.position.x, y + offset, 0);
-            
-
-            Debug.Log(offset + " " + item.name);
 
             button.transform.position = offsetPosition;
             offset -= 45;
 
             button.SetActive(true);
+            //set listener to detect changes
             toggle.onValueChanged.AddListener((isSelected) =>
             {
-                Debug.Log("hit toggle");
-                Debug.Log(toggle.isOn);
                 item.active = toggle.isOn;
             });
 
             toggle.isOn = item.active;
 
             button.GetComponent<RectTransform>().SetParent(foodPanel.transform);
-
-            //button.GetComponent<RectTransform>().SetParent(foodPanel.transform);
-            //button.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 10);
             button.GetComponentInChildren<Text>().text = item.name;
         }
 

@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        //set up listener to control the player
         onWalkingInput = new UnityEvent<float>();
         onScrollInput = new UnityEvent<float>();
 
@@ -39,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
 
+        //attach throw and crash sound to the player
         audio = gameObject.AddComponent<AudioSource>();
         audio.playOnAwake = false;
         audio.clip = throwSound;
@@ -51,27 +53,27 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
+        //move the player only if he read the instructions
         if (!StaticClass.runGame)
         {
             return;
         }
 
-        
+        //throw fruit with space
         if (Input.GetKeyDown(KeyCode.Space) && _fruitCoolDown <= 2)
         {
-
             throwFruit();
         }
+        //set cooldown to avoid food spamming
         _fruitCoolDown -= Time.deltaTime;
 
+        //move player
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 
-        
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
 
-       
         transform.Translate(0, 0, translation);
 
         // Rotate around our y-axis
@@ -82,12 +84,11 @@ public class PlayerControl : MonoBehaviour
         else
         {
             Quaternion newRotation = Quaternion.Euler(0, camOrient.transform.eulerAngles.y, 0);
-
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 10 * Time.deltaTime);
-
         }
         InvokeWalkingEvent();
 
+        //change selected food
         if (Input.mouseScrollDelta.y != 0)
         {
             onScrollInput.Invoke(Input.mouseScrollDelta.y);
@@ -102,42 +103,46 @@ public class PlayerControl : MonoBehaviour
 
         onWalkingInput.Invoke(walkingValue);
     }
+    //check collisions with animal and border -> ignore food collisons #collison-matrix
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Animal")
         {
+            //play crash sound and decrease life
             other.gameObject.SetActive(false);
             GameUI.remainingLife -= 1;
             crashAudio.Play();
         }
         else if (other.gameObject.tag == "Border")
         {
+            //teleport player
             transform.position = new Vector3(1.22f, 0, -11.9f);
         }
     }
 
     void throwFruit()
     {
-
+        //get position of the player to set the spawned fruit
         GameObject spawnedFruit = spawnFruit();
         spawnedFruit.SetActive(true);
         spawnedFruit.transform.position = transform.position;
         spawnedFruit.transform.rotation = transform.rotation;
         _fruitCoolDown = 3;
     }
+
     GameObject spawnFruit()
     {
+        //play throw audio
         audio.Play();
 
         GameObject spawnFruit;
 
+        //get the correct fruit
         int idx = GameUI.itemPointer;
 
-        Debug.Log("fruit with id " + idx);
+        Debug.Log("Throw fruit with id: " + idx);
         spawnFruit = fruitPool.fruitPool[idx].Dequeue();
         fruitPool.fruitPool[idx].Enqueue(spawnFruit);
         return spawnFruit;
-
     }
-
 }

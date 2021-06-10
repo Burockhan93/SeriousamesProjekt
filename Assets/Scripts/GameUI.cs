@@ -22,7 +22,6 @@ public class GameUI : MonoBehaviour
     private Sprite[] itemImage;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +29,10 @@ public class GameUI : MonoBehaviour
         initGame();
         remainingLifeText.text = remainingLife.ToString();
 
-        //changeFood(0);
-
+        //scroll listener to change the item
         PlayerControl.onScrollInput.AddListener(changeFoodNew);
 
+        //count the selected items
         int ctr = 0;
         foreach (var item in StaticClass.food)
         {
@@ -43,13 +42,15 @@ public class GameUI : MonoBehaviour
             }
         }
 
+        //set sprites for the food
         itemImage = new Sprite[ctr];
-        Debug.Log("num of food" + ctr);
+        Debug.Log("Number of selected different food: " + ctr);
         ctr = 0;
         foreach (var item in StaticClass.food)
         {
             if (item.active)
             {
+                //set the sprite reference
                 itemImage[ctr] = item.symbol;
                 ctr += 1;
             }
@@ -58,6 +59,7 @@ public class GameUI : MonoBehaviour
 
     public static void initGame()
     {
+        //reset the game
         remainingLife = MAX_LIFE;
         foodPointer = 0;
         StaticClass.score = 0;
@@ -67,6 +69,7 @@ public class GameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //update the UI only if the player read the instructions
         if (!StaticClass.runGame)
         {
             return;
@@ -83,32 +86,33 @@ public class GameUI : MonoBehaviour
         }
         else
         {
-            Debug.Log("0 remaining life -> end game.");
-            
+            Debug.Log("No remaining life -> end game.");
+
+            //release the cursor to select buttons
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             StaticClass.runGame = false;
+
+            //navigate to the end screen
             SceneManager.LoadScene("EndScreen");
         }
 
     }
     void changeFoodNew(float f)
     {
-
-        Debug.Log("item:  " + itemPointer);
+        //change selected food item
+        Debug.Log("item: " + itemPointer);
 
         if (f > 0 && itemPointer < itemImage.Length - 1)
         {
             itemPointer++;
-
         }
         else if (f < 0 && itemPointer > 0)
         {
             itemPointer--;
-
         }
 
+        //update visible sprite
         panel.GetComponent<Image>().sprite = itemImage[itemPointer];
-        
     }
 }

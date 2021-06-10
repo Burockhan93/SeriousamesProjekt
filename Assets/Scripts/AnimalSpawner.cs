@@ -24,20 +24,19 @@ public class AnimalSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //get outer bounds to spawn animals
+        //get outer bounds to spawn animals outside the game plane
         Vector3 size = plane.GetComponent<Renderer>().bounds.size;
         rightLimitation = plane.transform.position.x + size[0] / 2;
         leftLimitation = plane.transform.position.x - size[0] / 2;
 
         frontLimitation = plane.transform.position.z + size[2] / 2;
         backLimitation = plane.transform.position.z - size[2] / 2;
-
-        Debug.Log(rightLimitation + "; " + leftLimitation + "; " + frontLimitation + "; " + backLimitation);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //check if the user read the instructions
         if (!StaticClass.runGame)
         {
             return;
@@ -49,6 +48,7 @@ public class AnimalSpawner : MonoBehaviour
             this.frequency -= Time.deltaTime * 0.05f;
         }
 
+        //increase the counter to spawn animals
         this.counter = this.counter + Time.deltaTime;
         if (this.counter >= this.frequency)
         {
@@ -74,16 +74,16 @@ public class AnimalSpawner : MonoBehaviour
     {
         GameObject animal;
         int idx = Random.Range(0, animalPool.animalPool.Count);
-        
-        Debug.Log("Spawn animal with idx " + idx);
+
         animal = animalPool.animalPool[idx].Dequeue();
         animalPool.animalPool[idx].Enqueue(animal);
 
-        return animal!=null ? animal : null;
+        return animal != null ? animal : null;
     }
 
     Vector3 spawnPoint()
     {
+        //choose random point outside the game field to spawn the animals
         int side = Random.Range(0, 4);
         Vector3 spawnPosition;
 
@@ -108,8 +108,5 @@ public class AnimalSpawner : MonoBehaviour
 
         return spawnPosition;
     }
-
-
-
 
 }

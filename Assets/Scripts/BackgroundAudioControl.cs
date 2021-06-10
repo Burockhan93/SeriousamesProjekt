@@ -11,6 +11,7 @@ public class BackgroundAudioControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //play background music in a loop
         audio = gameObject.AddComponent<AudioSource>();
         audio.playOnAwake = true;
         audio.clip = sound;

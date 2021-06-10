@@ -75,7 +75,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void startGame()
     {
-        Debug.Log("startGame");
+        Debug.Log("Start Game");
 
         GamePanel.gameObject.SetActive(true);
         InstructionPanel.gameObject.SetActive(false);
@@ -85,6 +85,5 @@ public class ButtonBehaviour : MonoBehaviour
         //set curser
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
-                
     }
 }
