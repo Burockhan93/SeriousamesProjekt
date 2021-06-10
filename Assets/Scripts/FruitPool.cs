@@ -39,28 +39,5 @@ public class FruitPool : MonoBehaviour
                 id += 1;
             }
         }
-
-        /*
-        foreach (Pool pool in pools)
-        {
-            Queue<GameObject> spawnPool = new Queue<GameObject>();
-
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject fruit = Instantiate(pool.fruit);
-                fruit.SetActive(false);
-                spawnPool.Enqueue(fruit);
-            }
-
-            fruitPool.Add(pool.name, spawnPool);
-        }
-        */
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -19,10 +19,4 @@ public class BackgroundAudioControl : MonoBehaviour
         audio.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }

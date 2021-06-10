@@ -39,16 +39,7 @@ public class CamBehaviour : MonoBehaviour
      
         float horizontal = Input.GetAxis("Mouse X") * camSpeed;
         camOrient.transform.Rotate(0, horizontal, 0);
-        //float vertical = Input.GetAxis("Mouse Y") * camSpeed;
-        //if (isInvert)  //invert
-        //{
-        //    camOrient.transform.Rotate(vertical / 4, 0, 0); // 4 ist willk�rlich. Es beeinflusst die Sensitivit�t
-                                                       
-        //}
-        //else
-        //{
-        //    camOrient.transform.Rotate(-vertical / 4, 0, 0);
-        //}
+       
 
         //move the camera based on rotation
 

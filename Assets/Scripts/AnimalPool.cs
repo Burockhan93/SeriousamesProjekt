@@ -40,30 +40,5 @@ public class AnimalPool : MonoBehaviour
                 id += 1;
             }
         }
-
-        /*
-        foreach(Pool pool in pools)
-        {
-            
-            Queue<GameObject> spawnPool = new Queue<GameObject>();
-
-            for (int i=0; i<pool.size; i++)
-            {
-                GameObject animal = Instantiate(pool.animal);
-                animal.SetActive(false);
-                spawnPool.Enqueue(animal);
-                Debug.Log(animal);
-            }
-
-            animalPool.Add(pool.name, spawnPool);
-        }
-        */
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

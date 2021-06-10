@@ -22,9 +22,4 @@ public class EndScreenControl : MonoBehaviour
         BestScoreText.text = Mathf.Round(SaveScore.loadHighscore("overallHighscore_" + StaticClass.gameDifficulty)).ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

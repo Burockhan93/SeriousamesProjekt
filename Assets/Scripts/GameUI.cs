@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
-
-
     public Text remainingLifeText;
     public Text foodText;
     public Text scoreText;
@@ -18,7 +16,6 @@ public class GameUI : MonoBehaviour
     public static int itemPointer { get; private set; }
 
     private static int foodPointer = 0;
-    //TODO change to less life points
     public const int MAX_LIFE = 5;
     public static int remainingLife = 0;
 
@@ -57,12 +54,6 @@ public class GameUI : MonoBehaviour
                 ctr += 1;
             }
         }
-
-        // itemImage[0] = food[0].GetComponent<AdvancedFood>().symbol;
-        // itemImage[1] = food[1].GetComponent<AdvancedFood>().symbol;
-        // itemImage[2] = food[2].GetComponent<AdvancedFood>().symbol;
-        // itemImage[3] = food[3].GetComponent<AdvancedFood>().symbol;
-        // itemImage[4] = food[4].GetComponent<AdvancedFood>().symbol;
     }
 
     public static void initGame()
@@ -71,12 +62,6 @@ public class GameUI : MonoBehaviour
         foodPointer = 0;
         StaticClass.score = 0;
         itemPointer = 0;
-
-        //for (var i = 0; i < AnimalSpawner.animals.Count; i++)
-        //{
-        //    Destroy(AnimalSpawner.animals[i]);
-        //}
-        //AnimalSpawner.animals = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -99,19 +84,12 @@ public class GameUI : MonoBehaviour
         else
         {
             Debug.Log("0 remaining life -> end game.");
-            // Cursor.lockState = CursorLockMode.None;
+            
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             StaticClass.runGame = false;
             SceneManager.LoadScene("EndScreen");
         }
-
-        ////change selected item
-        //if (Input.mouseScrollDelta.y != 0)
-        //{
-        //    Debug.Log("Scroll " + (int)Input.mouseScrollDelta.y);
-        //    changeFood((int)Input.mouseScrollDelta.y);
-        //}
 
     }
     void changeFoodNew(float f)
@@ -133,28 +111,4 @@ public class GameUI : MonoBehaviour
         panel.GetComponent<Image>().sprite = itemImage[itemPointer];
         
     }
-
-
-    //public void changeFood(int direction)
-    //{
-    //    //modulo to scroll up/down
-    //    foodPointer = mod(foodPointer + direction, food.Length);
-    //    Debug.Log("Länge " + food.Length + "; pointer " + foodPointer);
-
-    //    //change food
-    //    selectedFood = food[foodPointer];
-
-    //    //change the food image
-    //    //foodImage.MeshRenderer.Materials = selectedFood.Material;
-    //    //foodImage.GetComponent<MeshRenderer>().material = selectedFood.GetComponent<MeshRenderer>().sharedMaterial;
-    //    foodText.text = selectedFood.name;
-
-    //}
-
-    //int mod(int a, int b)
-    //{
-    //    int r = a % b;
-    //    return r < 0 ? r + b : r;
-    //}
-
 }

@@ -16,7 +16,7 @@ public class ButtonBehaviour : MonoBehaviour
     public void navigateToEndscreen()
     {
         Debug.Log("Navigate to Endscreen");
-        // Cursor.lockState = CursorLockMode.Confined;
+        
         SceneManager.LoadScene("EndScreen");
     }
 
@@ -32,8 +32,7 @@ public class ButtonBehaviour : MonoBehaviour
 
         //reset the game
         GameUI.initGame();
-        // GamePanel.SetActive(false);
-        // InstructionPanel.SetActive(true);
+       
         SceneManager.LoadScene("Game");
     }
 
@@ -86,6 +85,6 @@ public class ButtonBehaviour : MonoBehaviour
         //set curser
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
-                // Cursor.lockState = CursorLockMode.Locked;
+                
     }
 }

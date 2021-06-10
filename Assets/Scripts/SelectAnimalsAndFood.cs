@@ -26,6 +26,7 @@ public class SelectAnimalsAndFood : MonoBehaviour
             //transform.GetChild(i).gameObject.AddComponent<Toggle>();
 
             GameObject button = (GameObject)Instantiate(toggleButton);
+            
             Toggle toggle = button.GetComponent<Toggle>();
             Vector3 offsetPosition = new Vector3(animalPanel.transform.position.x, y + offset, 0);
 

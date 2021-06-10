@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*Replaced by SelectAnimandFood
+ * */
 public class SetAnimalFood : MonoBehaviour
 {
     public static List<bool> animals = new List<bool>();
