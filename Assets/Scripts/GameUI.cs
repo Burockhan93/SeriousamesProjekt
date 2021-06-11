@@ -18,9 +18,8 @@ public class GameUI : MonoBehaviour
     private static int foodPointer = 0;
     public const int MAX_LIFE = 5;
     public static int remainingLife = 0;
-
-    private Sprite[] itemImage;
-
+    private static bool initUi = false;
+    private static Sprite[] itemImage;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +30,15 @@ public class GameUI : MonoBehaviour
 
         //scroll listener to change the item
         PlayerControl.onScrollInput.AddListener(changeFoodNew);
+    }
+
+    public static void initGame()
+    {
+        //reset the game
+        remainingLife = MAX_LIFE;
+        foodPointer = 0;
+        StaticClass.score = 0;
+        itemPointer = 0;
 
         //count the selected items
         int ctr = 0;
@@ -55,15 +63,7 @@ public class GameUI : MonoBehaviour
                 ctr += 1;
             }
         }
-    }
-
-    public static void initGame()
-    {
-        //reset the game
-        remainingLife = MAX_LIFE;
-        foodPointer = 0;
-        StaticClass.score = 0;
-        itemPointer = 0;
+        initUi = false;
     }
 
     // Update is called once per frame
@@ -73,6 +73,13 @@ public class GameUI : MonoBehaviour
         if (!StaticClass.runGame)
         {
             return;
+        }
+
+        if (!initUi)
+        {
+            //update visible sprite for the first time
+            panel.GetComponent<Image>().sprite = itemImage[itemPointer];
+            initUi = true;
         }
 
         //increase score by time

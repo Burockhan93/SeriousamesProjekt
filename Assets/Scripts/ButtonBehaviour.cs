@@ -13,6 +13,10 @@ public class ButtonBehaviour : MonoBehaviour
     [SerializeField] GameObject GamePanel;
     [SerializeField] GameObject InstructionPanel;
 
+
+    [SerializeField] GameObject DifficultyPanel;
+    [SerializeField] GameObject AnimalsAndFoodSelectionPanel;
+
     public void navigateToEndscreen()
     {
         Debug.Log("Navigate to Endscreen");
@@ -80,10 +84,40 @@ public class ButtonBehaviour : MonoBehaviour
         GamePanel.gameObject.SetActive(true);
         InstructionPanel.gameObject.SetActive(false);
         
+        GameUI.initGame();
         StaticClass.runGame = true;
 
         //set curser
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
+    }
+
+    public void selectFoodAndAnimals(){
+        bool hasAnimals = false;
+        bool hasFood = false;
+        foreach (var item in StaticClass.animals)
+        {
+            if(item.active){
+                hasAnimals = true;
+                break;
+            }
+        }
+
+        foreach (var item in StaticClass.food)
+        {
+            if(item.active){
+                hasFood = true;
+                break;
+            }
+        }  
+        Debug.Log(hasFood + " " + hasAnimals);
+
+        if(hasFood && hasAnimals){
+            //allow game start
+            AnimalsAndFoodSelectionPanel.SetActive(false);
+            DifficultyPanel.SetActive(true);
+        }else{
+            //do nothing -> no animals or food selected
+        }
     }
 }
